@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Diet Screen</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #0D0D0D; color: #FFFFFF; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding-bottom: 128px; -webkit-font-smoothing: antialiased;">
+
+    <!-- 1. Hero Section: Fuel Gauge (Donut Chart) -->
+    <div style="padding-top: 24px; padding-bottom: 32px; padding-left: 16px; padding-right: 16px; position: relative; overflow: hidden;">
+        
+        <!-- Ambient Orange Glow -->
+        <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 100%; height: 100%; background-color: rgba(249, 115, 22, 0.05); filter: blur(100px); pointer-events: none;"></div>
+
+        <div style="position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10;">
+            <div style="position: relative; width: 260px; height: 260px;">
+                <!-- SVG Ring -->
+                <svg style="width: 100%; height: 100%; transform: rotate(-90deg);" viewBox="0 0 260 260">
+                    <!-- Track -->
+                    <circle cx="130" cy="130" r="120" fill="none" stroke="#1A1A1A" stroke-width="20" stroke-linecap="round" />
+                    
+                    <!-- Progress Gradient Def -->
+                    <defs>
+                        <linearGradient id="calorieGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#F97316" /> <!-- Orange-500 -->
+                            <stop offset="100%" stop-color="#EAB308" /> <!-- Yellow-500 -->
+                        </linearGradient>
+                    </defs>
+                    
+                    <!-- Progress Arc (68% of 2500) -->
+                    <!-- Circumference = 2 * PI * 120 = ~754. Offset calculation roughly for visual match -->
+                    <circle cx="130" cy="130" r="120" fill="none" stroke="url(#calorieGradient)" stroke-width="20" stroke-dasharray="754" stroke-dashoffset="241" stroke-linecap="round" style="filter: drop-shadow(0 0 15px rgba(249,115,22,0.4));" />
+                </svg>
+
+                <!-- Center Content -->
+                <div style="position: absolute; inset: 0; top: 0; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px; opacity: 0.8;">
+                        <!-- Flame Icon -->
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#F97316" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.332-.224-4.818 1.429-6.848a5 5 0 0 0-.025 6.58 2.5 2.5 0 0 0-2.35 1.768Z"/>
+                            <path d="M10 10c1.5 1.5 2.088 3.725 2.046 5.867A5.003 5.003 0 0 1 12 20a10 10 0 0 1-6-19c2.833 3.333 4.667 6.667 4 9Z"/>
+                        </svg>
+                        <span style="font-size: 12px; font-weight: 700; color: #F97316; text-transform: uppercase; letter-spacing: 0.1em;">Consumidas</span>
+                    </div>
+                    <span style="font-size: 60px; font-weight: 900; color: #FFFFFF; letter-spacing: -0.05em; line-height: 1; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));">
+                        1.701
+                    </span>
+                    <span style="font-size: 14px; font-weight: 500; color: #6B7280; margin-top: 8px;">
+                        de 2.500 kcal
+                    </span>
+                </div>
+            </div>
+
+            <!-- Feedback Pill -->
+            <div style="margin-top: -20px; background-color: rgba(26, 26, 26, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(249, 115, 22, 0.2); padding: 8px 24px; border-radius: 9999px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 8px;">
+                <span style="width: 8px; height: 8px; border-radius: 50%; background-color: #F97316; display: inline-block;"></span>
+                <span style="font-size: 12px; font-weight: 700; color: #D1D5DB;">
+                    Ainda restam <span style="color: #FFFFFF;">799 kcal</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Container for Content -->
+    <div style="padding-left: 20px; padding-right: 20px; position: relative; z-index: 10;">
+        
+        <!-- 2. Grid de Macros (Pílulas Visuais) -->
+        <section style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 32px;">
+            
+            <!-- Proteína -->
+            <div style="background-color: rgba(6, 182, 212, 0.05); border: 1px solid rgba(6, 182, 212, 0.2); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between; height: 112px; position: relative; overflow: hidden;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+                    <div style="padding: 8px; background-color: rgba(6, 182, 212, 0.1); border-radius: 8px; color: #22D3EE; display: flex; align-items: center; justify-content: center;">
+                        <!-- Beef Icon -->
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                           <circle cx="12.5" cy="8.5" r="2.5"/>
+                           <path d="M12.5 2a6.5 6.5 0 0 0-6.22 9h6.22a2.5 2.5 0 0 1 0-5z" opacity="0"/> <!-- Abstract representation -->
+                           <path d="M6 10c-1.1 0-2 .9-2 2v2a2 2 0 0 0 2 2h2"/>
+                           <path d="M18 10h-6"/>
+                           <path d="M16 16h2a2 2 0 0 0 2-2v-2c0-1.1-.9-2-2-2"/>
+                           <path d="M9 16h6"/>
+                           <!-- Simple box for muscle/meat -->
+                           <rect x="4" y="6" width="16" height="12" rx="2" ry="2"/>
+                           <line x1="8" y1="10" x2="16" y2="10"/>
+                        </svg>
+                    </div>
+                    <span style="font-size: 10px; font-weight: 700; color: rgba(6, 182, 212, 0.6); text-transform: uppercase;">Prot</span>
+                </div>
+                <div>
+                    <div style="display: flex; align-items: flex-end; gap: 4px; margin-bottom: 6px;">
+                        <span style="font-size: 20px; font-weight: 700; color: #FFFFFF;">148</span>
+                        <span style="font-size: 10px; color: rgba(165, 243, 252, 0.6); margin-bottom: 4px;">/ 180g</span>
+                    </div>
+                    <div style="height: 6px; width: 100%; background-color: #000000; border-radius: 9999px; overflow: hidden;">
+                        <div style="height: 100%; background-color: #22D3EE; width: 82%; border-radius: 9999px; box-shadow: 0 0 10px rgba(34, 211, 238, 0.5);"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carboidratos -->
+            <div style="background-color: rgba(234, 179, 8, 0.05); border: 1px solid rgba(234, 179, 8, 0.2); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between; height: 112px; position: relative; overflow: hidden;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+                    <div style="padding: 8px; background-color: rgba(234, 179, 8, 0.1); border-radius: 8px; color: #FACC15; display: flex; align-items: center; justify-content: center;">
+                        <!-- Wheat Icon -->
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 22 16 8"/>
+                            <path d="M3.47 12.53 5 11l1.53 1.53a3.5 3.5 0 0 1 0 4.94L5 19l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z"/>
+                            <path d="M7.47 8.53 9 7l1.53 1.53a3.5 3.5 0 0 1 0 4.94L9 15l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z"/>
+                            <path d="M11.47 4.53 13 3l1.53 1.53a3.5 3.5 0 0 1 0 4.94L13 11l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z"/>
+                        </svg>
+                    </div>
+                    <span style="font-size: 10px; font-weight: 700; color: rgba(234, 179, 8, 0.6); text-transform: uppercase;">Carb</span>
+                </div>
+                <div>
+                    <div style="display: flex; align-items: flex-end; gap: 4px; margin-bottom: 6px;">
+                        <span style="font-size: 20px; font-weight: 700; color: #FFFFFF;">190</span>
+                        <span style="font-size: 10px; color: rgba(254, 240, 138, 0.6); margin-bottom: 4px;">/ 250g</span>
+                    </div>
+                    <div style="height: 6px; width: 100%; background-color: #000000; border-radius: 9999px; overflow: hidden;">
+                        <div style="height: 100%; background-color: #FACC15; width: 76%; border-radius: 9999px; box-shadow: 0 0 10px rgba(250, 204, 21, 0.5);"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gordura -->
+            <div style="background-color: rgba(168, 85, 247, 0.05); border: 1px solid rgba(168, 85, 247, 0.2); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between; height: 112px; position: relative; overflow: hidden;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+                    <div style="padding: 8px; background-color: rgba(168, 85, 247, 0.1); border-radius: 8px; color: #C084FC; display: flex; align-items: center; justify-content: center;">
+                        <!-- Droplet Icon -->
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>
+                        </svg>
+                    </div>
+                    <span style="font-size: 10px; font-weight: 700; color: rgba(168, 85, 247, 0.6); text-transform: uppercase;">Gord</span>
+                </div>
+                <div>
+                    <div style="display: flex; align-items: flex-end; gap: 4px; margin-bottom: 6px;">
+                        <span style="font-size: 20px; font-weight: 700; color: #FFFFFF;">57</span>
+                        <span style="font-size: 10px; color: rgba(233, 213, 255, 0.6); margin-bottom: 4px;">/ 80g</span>
+                    </div>
+                    <div style="height: 6px; width: 100%; background-color: #000000; border-radius: 9999px; overflow: hidden;">
+                        <div style="height: 100%; background-color: #C084FC; width: 70%; border-radius: 9999px; box-shadow: 0 0 10px rgba(192, 132, 252, 0.5);"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Lista de Refeições (Meal Log) -->
+        <section>
+           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+              <h3 style="font-size: 18px; font-weight: 700; color: #FFFFFF; margin: 0;">Refeições de Hoje</h3>
+              <span style="font-size: 12px; color: #F97316; font-weight: 500; cursor: pointer;">Editar Metas</span>
+           </div>
+
+           <div style="display: flex; flex-direction: column; gap: 12px;">
+              
+              <!-- Café da Manhã -->
+              <div style="background-color: #1A1A1A; border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 16px; position: relative; overflow: hidden;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div style="flex: 1;">
+                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                                <h4 style="color: #FFFFFF; font-weight: 700; font-size: 14px; margin: 0;">Café da Manhã</h4>
+                                <span style="font-size: 10px; font-weight: 500; color: #6B7280; background-color: #0D0D0D; padding: 2px 6px; border-radius: 4px;">08:00</span>
+                            </div>
+                            <p style="font-size: 12px; color: #9CA3AF; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">3 Ovos mexidos, Café preto, 1 Banana...</p>
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 12px; margin-left: 16px;">
+                            <span style="font-size: 14px; font-weight: 700; color: #F97316;">
+                                388 <span style="font-size: 10px; color: #6B7280; font-weight: 400;">kcal</span>
+                            </span>
+                            
+                            <button style="width: 24px; height: 24px; border-radius: 50%; background-color: #262626; border: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; color: #9CA3AF; cursor: pointer;">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                            </button>
+                        </div>
+                    </div>
+              </div>
+
+              <!-- Almoço -->
+              <div style="background-color: #1A1A1A; border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 16px; position: relative; overflow: hidden;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div style="flex: 1;">
+                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                                <h4 style="color: #FFFFFF; font-weight: 700; font-size: 14px; margin: 0;">Almoço</h4>
+                                <span style="font-size: 10px; font-weight: 500; color: #6B7280; background-color: #0D0D0D; padding: 2px 6px; border-radius: 4px;">12:30</span>
+                            </div>
+                            <p style="font-size: 12px; color: #9CA3AF; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">Frango grelhado, Arroz branco, Brócolis...</p>
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 12px; margin-left: 16px;">
+                            <span style="font-size: 14px; font-weight: 700; color: #F97316;">
+                                650 <span style="font-size: 10px; color: #6B7280; font-weight: 400;">kcal</span>
+                            </span>
+                            
+                            <button style="width: 24px; height: 24px; border-radius: 50%; background-color: #262626; border: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; color: #9CA3AF; cursor: pointer;">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                            </button>
+                        </div>
+                    </div>
+              </div>
+
+              <!-- Lanche da Tarde -->
+              <div style="background-color: #1A1A1A; border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 16px; position: relative; overflow: hidden;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div style="flex: 1;">
+                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                                <h4 style="color: #FFFFFF; font-weight: 700; font-size: 14px; margin: 0;">Lanche da Tarde</h4>
+                                <span style="font-size: 10px; font-weight: 500; color: #6B7280; background-color: #0D0D0D; padding: 2px 6px; border-radius: 4px;">16:00</span>
+                            </div>
+                            <p style="font-size: 12px; color: #9CA3AF; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">Whey Protein, Aveia, Maçã...</p>
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 12px; margin-left: 16px;">
+                            <span style="font-size: 14px; font-weight: 700; color: #F97316;">
+                                320 <span style="font-size: 10px; color: #6B7280; font-weight: 400;">kcal</span>
+                            </span>
+                            
+                            <button style="width: 24px; height: 24px; border-radius: 50%; background-color: #262626; border: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; color: #9CA3AF; cursor: pointer;">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                            </button>
+                        </div>
+                    </div>
+              </div>
+
+              <!-- Jantar -->
+              <div style="background-color: #1A1A1A; border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 16px; position: relative; overflow: hidden;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div style="flex: 1;">
+                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                                <h4 style="color: #FFFFFF; font-weight: 700; font-size: 14px; margin: 0;">Jantar</h4>
+                                <span style="font-size: 10px; font-weight: 500; color: #6B7280; background-color: #0D0D0D; padding: 2px 6px; border-radius: 4px;">20:00</span>
+                            </div>
+                            <p style="font-size: 12px; color: #9CA3AF; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">Salmão, Salada verde, Azeite...</p>
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 12px; margin-left: 16px;">
+                            <span style="font-size: 14px; font-weight: 700; color: #4B5563;">
+                                343 <span style="font-size: 10px; color: #6B7280; font-weight: 400;">kcal</span>
+                            </span>
+                            
+                            <button style="width: 24px; height: 24px; border-radius: 50%; background-color: #262626; border: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; color: #9CA3AF; cursor: pointer;">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                            </button>
+                        </div>
+                    </div>
+              </div>
+
+           </div>
+        </section>
+
+    </div>
+
+    <!-- 4. FAB (Floating Action Button) -->
+    <button style="position: fixed; bottom: 96px; right: 24px; z-index: 40; background-color: #F97316; border: none; padding: 16px; border-radius: 9999px; box-shadow: 0 0 30px rgba(249, 115, 22, 0.5); display: flex; align-items: center; justify-content: center; cursor: pointer; color: #000000;">
+         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 7V5a2 2 0 0 1 2-2h2"/>
+            <path d="M17 3h2a2 2 0 0 1 2 2v2"/>
+            <path d="M21 17v2a2 2 0 0 1-2 2h-2"/>
+            <path d="M7 21H5a2 2 0 0 1-2-2v-2"/>
+            <rect width="10" height="8" x="7" y="8" rx="1"/>
+         </svg>
+    </button>
+
+    <!-- Bottom Nav -->
+    <nav style="position: fixed; bottom: 0; left: 0; right: 0; background-color: rgba(13, 13, 13, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-top: 1px solid rgba(255,255,255,0.05); padding-top: 8px; padding-bottom: 34px; padding-left: 8px; padding-right: 8px; z-index: 50; box-shadow: 0 -10px 40px rgba(0,0,0,0.5);">
+      <div style="display: flex; justify-content: space-between; align-items: center; max-width: 512px; margin: 0 auto; height: 64px;">
+        
+        <!-- Home (Inactive) -->
+        <button style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; background: none; border: none; color: #6B7280; cursor: pointer;">
+            <div style="padding: 4px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/> 
+                    <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+            </div>
+            <span style="font-size: 10px; font-weight: 500; margin-top: 2px;">Início</span>
+        </button>
+
+        <!-- Treino (Inactive) -->
+        <button style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; background: none; border: none; color: #6B7280; cursor: pointer;">
+            <div style="padding: 4px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m6.5 6.5 11 11"/>
+                    <path d="m21 21-1-1"/>
+                    <path d="m3 3 1 1"/>
+                    <path d="m18 22 4-4"/>
+                    <path d="m2 6 4-4"/>
+                    <path d="m3 10 7-7"/>
+                    <path d="m14 21 7-7"/>
+                </svg>
+            </div>
+            <span style="font-size: 10px; font-weight: 500; margin-top: 2px;">Treino</span>
+        </button>
+
+        <!-- Dieta (Active - Orange) -->
+        <button style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; background: none; border: none; color: #F97316; cursor: pointer;">
+            <div style="padding: 4px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/>
+                    <path d="M7 2v20"/>
+                    <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/>
+                </svg>
+            </div>
+            <span style="font-size: 10px; font-weight: 500; margin-top: 2px;">Dieta</span>
+        </button>
+
+        <!-- Água (Inactive + Progress) -->
+        <button style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; background: none; border: none; color: #6B7280; cursor: pointer;">
+            <div style="position: relative; padding: 4px;">
+                <!-- Ring -->
+                <div style="position: absolute; inset: 0; transform: rotate(-90deg);">
+                  <svg width="100%" height="100%" viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" fill="none" stroke="#333" stroke-width="2" />
+                      <circle cx="12" cy="12" r="10" fill="none" stroke="#3b82f6" stroke-width="2" stroke-dasharray="62.8" stroke-dashoffset="31.4" stroke-linecap="round" />
+                  </svg>
+                </div>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform: scale(0.75);">
+                    <path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>
+                </svg>
+            </div>
+            <span style="font-size: 10px; font-weight: 500; margin-top: 2px;">Água</span>
+        </button>
+
+        <!-- Resumo (Inactive) -->
+        <button style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; background: none; border: none; color: #6B7280; cursor: pointer;">
+            <div style="padding: 4px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="16" x2="8" y1="13" y2="13"/>
+                    <line x1="16" x2="8" y1="17" y2="17"/>
+                    <line x1="10" x2="8" y1="9" y2="9"/>
+                </svg>
+            </div>
+            <span style="font-size: 10px; font-weight: 500; margin-top: 2px;">Resumo</span>
+        </button>
+
+        <!-- Mais (Inactive) -->
+        <button style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; background: none; border: none; color: #6B7280; cursor: pointer;">
+            <div style="padding: 4px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="1"/>
+                    <circle cx="19" cy="12" r="1"/>
+                    <circle cx="5" cy="12" r="1"/>
+                </svg>
+            </div>
+            <span style="font-size: 10px; font-weight: 500; margin-top: 2px;">Mais</span>
+        </button>
+
+      </div>
+    </nav>
+
+</body>
+</html>
