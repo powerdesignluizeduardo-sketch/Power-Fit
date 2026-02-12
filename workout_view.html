@@ -15,120 +15,139 @@
     };
 </script>
 
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+    
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['Inter', 'sans-serif'] },
+        colors: {
+          app: { bg: '#0D0D0D', card: '#1A1A1A', border: '#262626', neon: '#00FF88', neonHover: '#00cc6a', text: '#FFFFFF', subtext: '#A3A3A3' }
+        },
+        screens: { 'xs': '375px' }
+      }
+    }
+  }
+</script>
+
+<style>
+  body { background-color: #0D0D0D; color: #FFFFFF; -webkit-font-smoothing: antialiased; }
+  ::-webkit-scrollbar { width: 0px; background: transparent; }
+</style>
 </head>
-<body style="margin: 0; padding: 0; background-color: #0D0D0D; color: #FFFFFF; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; -webkit-font-smoothing: antialiased;">
+<body class="min-h-screen bg-[#0D0D0D] pb-32">
 
-    <div style="max-width: 512px; margin: 0 auto; background-color: #0D0D0D; min-height: 100vh; position: relative; padding-bottom: 128px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); border-left: 1px solid rgba(255,255,255,0.05); border-right: 1px solid rgba(255,255,255,0.05);">
+    <div class="max-w-md mx-auto min-h-screen relative bg-[#0D0D0D] shadow-2xl overflow-hidden border-x border-white/5">
 
-        <div style="padding: 20px; display: flex; flex-direction: column; gap: 32px; animation: fadeIn 0.5s ease-out;">
+        <div class="p-5 flex flex-col gap-8 animate-[fadeIn_0.5s_ease-out]">
             
             <!-- Header & Weekly Progress -->
             <section>
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-                    <h2 style="font-size: 24px; font-weight: 700; color: #FFFFFF; letter-spacing: -0.025em; margin: 0;">Sua Jornada Semanal</h2>
-                    <button style="padding: 8px; border-radius: 9999px; background-color: #1A1A1A; border: none; color: #9CA3AF; cursor: pointer; display: flex; align-items: center; justify-content: center;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.38a2 2 0 0 0-.73-2.73l-.15-.1a2 2 0 0 1-1-1.72v-.51a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
-                            <circle cx="12" cy="12" r="3"/>
-                        </svg>
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-2xl font-bold text-white tracking-tight">Sua Jornada Semanal</h2>
+                    <button class="p-2 rounded-full bg-[#1A1A1A] hover:bg-[#262626] text-gray-400 transition-colors">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.38a2 2 0 0 0-.73-2.73l-.15-.1a2 2 0 0 1-1-1.72v-.51a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
                     </button>
                 </div>
 
-                <div style="background-color: #1A1A1A; border: 1px solid #262626; border-radius: 16px; padding: 20px;">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 12px;">
-                        <span style="font-size: 12px; font-weight: 700; color: #A3A3A3; text-transform: uppercase; letter-spacing: 0.05em;">Progresso da Meta</span>
-                        <div style="text-align: right;">
-                            <span style="font-size: 24px; font-weight: 700; color: #FFFFFF;">0<span style="color: #6B7280;">/5</span></span>
+                <div class="bg-[#1A1A1A] border border-[#262626] rounded-2xl p-5">
+                    <div class="flex justify-between items-end mb-3">
+                        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Progresso da Meta</span>
+                        <div class="text-right">
+                            <span class="text-2xl font-bold text-white">0<span class="text-gray-500">/5</span></span>
                         </div>
                     </div>
                     
                     <!-- Segmented Progress Bar -->
-                    <div style="display: flex; gap: 8px; height: 12px;">
-                        <div style="flex: 1; border-radius: 9999px; background-color: #262626; border: 1px solid rgba(255,255,255,0.05);"></div>
-                        <div style="flex: 1; border-radius: 9999px; background-color: #151515;"></div>
-                        <div style="flex: 1; border-radius: 9999px; background-color: #151515;"></div>
-                        <div style="flex: 1; border-radius: 9999px; background-color: #151515;"></div>
-                        <div style="flex: 1; border-radius: 9999px; background-color: #151515;"></div>
+                    <div class="flex gap-2 h-3">
+                        <div class="flex-1 rounded-full bg-[#262626] border border-white/5"></div>
+                        <div class="flex-1 rounded-full bg-[#151515]"></div>
+                        <div class="flex-1 rounded-full bg-[#151515]"></div>
+                        <div class="flex-1 rounded-full bg-[#151515]"></div>
+                        <div class="flex-1 rounded-full bg-[#151515]"></div>
                     </div>
-                    <p style="font-size: 10px; color: #A3A3A3; margin-top: 8px; text-align: right; margin-bottom: 0;">0% Concluído</p>
+                    <p class="text-[10px] text-gray-400 mt-2 text-right">0% Concluído</p>
                 </div>
             </section>
 
             <!-- Stats Matrix -->
-            <section style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
+            <section class="grid grid-cols-3 gap-3">
                 <!-- Calories -->
-                <div style="background-color: #1A1A1A; border: 1px solid #262626; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
-                    <div style="margin-bottom: 8px; padding: 8px; background-color: rgba(249, 115, 22, 0.1); border-radius: 9999px; display: flex;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#F97316" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.332-.224-4.818 1.429-6.848a5 5 0 0 0-.025 6.58 2.5 2.5 0 0 0-2.35 1.768Z"/><path d="M10 10c1.5 1.5 2.088 3.725 2.046 5.867A5.003 5.003 0 0 1 12 20a10 10 0 0 1-6-19c2.833 3.333 4.667 6.667 4 9Z"/></svg>
+                <div class="bg-[#1A1A1A] border border-[#262626] rounded-2xl p-4 flex flex-col items-center justify-center text-center">
+                    <div class="mb-2 p-2 bg-orange-500/10 rounded-full">
+                        <svg class="w-5 h-5 text-orange-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.332-.224-4.818 1.429-6.848a5 5 0 0 0-.025 6.58 2.5 2.5 0 0 0-2.35 1.768Z"/><path d="M10 10c1.5 1.5 2.088 3.725 2.046 5.867A5.003 5.003 0 0 1 12 20a10 10 0 0 1-6-19c2.833 3.333 4.667 6.667 4 9Z"/></svg>
                     </div>
-                    <span style="font-size: 18px; font-weight: 700; color: #FFFFFF;">2.375</span>
-                    <span style="font-size: 10px; color: #9CA3AF; text-transform: uppercase;">Kcal da Semana</span>
-                    <div style="display: flex; align-items: center; gap: 4px; margin-top: 6px; font-size: 10px; color: #22c55e;">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="19" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
-                        12%
+                    <span class="text-lg font-bold text-white">2.375</span>
+                    <span class="text-[10px] text-gray-400 uppercase">Kcal da Semana</span>
+                    <div class="flex items-center gap-1 mt-1.5 text-[10px] text-green-500">
+                        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="19" y2="5"/><polyline points="5 12 12 5 19 12"/></svg> 12%
                     </div>
                 </div>
 
                 <!-- Frequency -->
-                <div style="background-color: #1A1A1A; border: 1px solid #262626; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
-                     <div style="margin-bottom: 8px; padding: 8px; background-color: rgba(34, 211, 238, 0.1); border-radius: 9999px; display: flex;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6.5 6.5 11 11"/><path d="m21 21-1-1"/><path d="m3 3 1 1"/><path d="m18 22 4-4"/><path d="m2 6 4-4"/><path d="m3 10 7-7"/><path d="m14 21 7-7"/></svg>
+                <div class="bg-[#1A1A1A] border border-[#262626] rounded-2xl p-4 flex flex-col items-center justify-center text-center">
+                     <div class="mb-2 p-2 bg-cyan-500/10 rounded-full">
+                        <svg class="w-5 h-5 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6.5 6.5 11 11"/><path d="m21 21-1-1"/><path d="m3 3 1 1"/><path d="m18 22 4-4"/><path d="m2 6 4-4"/><path d="m3 10 7-7"/><path d="m14 21 7-7"/></svg>
                     </div>
-                    <span style="font-size: 18px; font-weight: 700; color: #FFFFFF;">0</span>
-                    <span style="font-size: 10px; color: #9CA3AF; text-transform: uppercase;">Treinos Feitos</span>
-                    <div style="display: flex; align-items: center; gap: 4px; margin-top: 6px; font-size: 10px; color: #4B5563;">
-                        -
-                    </div>
+                    <span class="text-lg font-bold text-white">0</span>
+                    <span class="text-[10px] text-gray-400 uppercase">Treinos Feitos</span>
+                    <div class="flex items-center gap-1 mt-1.5 text-[10px] text-gray-600">-</div>
                 </div>
 
                 <!-- History -->
-                <div style="background-color: #1A1A1A; border: 1px solid #262626; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
-                     <div style="margin-bottom: 8px; padding: 8px; background-color: rgba(0, 255, 136, 0.1); border-radius: 9999px; display: flex;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00FF88" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                <div class="bg-[#1A1A1A] border border-[#262626] rounded-2xl p-4 flex flex-col items-center justify-center text-center">
+                     <div class="mb-2 p-2 bg-[#00FF88]/10 rounded-full">
+                        <svg class="w-5 h-5 text-[#00FF88]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
                     </div>
-                    <span style="font-size: 18px; font-weight: 700; color: #FFFFFF;">95</span>
-                    <span style="font-size: 10px; color: #9CA3AF; text-transform: uppercase;">Total Concluído</span>
-                    <div style="display: flex; align-items: center; gap: 4px; margin-top: 6px; font-size: 10px; color: #EF4444;">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="5" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
-                        2%
+                    <span class="text-lg font-bold text-white">95</span>
+                    <span class="text-[10px] text-gray-400 uppercase">Total Concluído</span>
+                    <div class="flex items-center gap-1 mt-1.5 text-[10px] text-red-500">
+                        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="5" y2="19"/><polyline points="19 12 12 19 5 12"/></svg> 2%
                     </div>
                 </div>
             </section>
 
             <!-- Hero Card: Next Workout -->
             <section>
-                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
-                    <div style="width: 8px; height: 8px; border-radius: 50%; background-color: #00FF88; box-shadow: 0 0 8px rgba(0,255,136,0.5);"></div>
-                    <span style="font-size: 12px; font-weight: 700; color: #00FF88; text-transform: uppercase; letter-spacing: 0.1em;">Treino Sugerido para Hoje</span>
+                <div class="flex items-center gap-2 mb-3">
+                    <div class="w-2 h-2 rounded-full bg-[#00FF88] animate-pulse"></div>
+                    <span class="text-xs font-bold text-[#00FF88] uppercase tracking-widest">Treino Sugerido para Hoje</span>
                 </div>
                 
-                <div style="position: relative; background-color: #1A1A1A; border-radius: 24px; padding: 24px; border: 1px solid rgba(0, 255, 136, 0.3); box-shadow: 0 0 30px rgba(0,0,0,0.5); overflow: hidden;">
+                <div class="relative group bg-[#1A1A1A] rounded-3xl p-6 border border-[#00FF88]/30 hover:border-[#00FF88]/50 transition-all duration-300 shadow-[0_0_30px_rgba(0,0,0,0.5)] overflow-hidden">
                     <!-- Background Glow -->
-                    <div style="position: absolute; top: -80px; right: -80px; width: 256px; height: 256px; background-color: rgba(0, 255, 136, 0.05); filter: blur(80px); border-radius: 9999px; pointer-events: none;"></div>
+                    <div class="absolute -top-20 -right-20 w-64 h-64 bg-[#00FF88]/5 blur-[80px] rounded-full pointer-events-none"></div>
                     
-                    <div style="position: relative; z-index: 10;">
-                        <div style="display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 6px; background-color: rgba(0, 255, 136, 0.1); border: 1px solid rgba(0, 255, 136, 0.2); color: #00FF88; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px;">
+                    <div class="relative z-10">
+                        <div class="inline-flex items-center px-2.5 py-1 rounded-md bg-[#00FF88]/10 border border-[#00FF88]/20 text-[#00FF88] text-[10px] font-bold uppercase tracking-wider mb-4">
                             Próximo da Fila
                         </div>
 
-                        <h3 style="font-size: 30px; font-weight: 800; color: #FFFFFF; margin-bottom: 4px; margin-top: 0;">Treino A - Empurrar</h3>
-                        <p style="color: #9CA3AF; font-size: 14px; margin-bottom: 24px; margin-top: 0;">Foco: Peito, Ombros e Tríceps</p>
+                        <h3 class="text-3xl font-extrabold text-white mb-1">Treino A - Empurrar</h3>
+                        <p class="text-gray-400 text-sm mb-6">Foco: Peito, Ombros e Tríceps</p>
 
-                        <div style="display: flex; gap: 12px; margin-bottom: 24px;">
-                            <div style="display: flex; align-items: center; gap: 6px; padding: 6px 12px; background-color: #262626; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="10" x2="14" y1="2" y2="2"/><line x1="12" x2="15" y1="14" y2="11"/><circle cx="12" cy="14" r="8"/></svg>
-                                <span style="font-size: 12px; color: #FFFFFF; font-weight: 500;">55 min</span>
+                        <div class="flex gap-3 mb-6">
+                            <div class="flex items-center gap-1.5 px-3 py-1.5 bg-[#262626] rounded-lg border border-white/5">
+                                <svg class="w-3.5 h-3.5 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="10" x2="14" y1="2" y2="2"/><line x1="12" x2="15" y1="14" y2="11"/><circle cx="12" cy="14" r="8"/></svg>
+                                <span class="text-xs text-white font-medium">55 min</span>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 6px; padding: 6px 12px; background-color: #262626; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                                <span style="font-size: 12px; color: #FFFFFF; font-weight: 500;">Alta Intensidade</span>
+                            <div class="flex items-center gap-1.5 px-3 py-1.5 bg-[#262626] rounded-lg border border-white/5">
+                                <svg class="w-3.5 h-3.5 text-orange-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                                <span class="text-xs text-white font-medium">Alta Intensidade</span>
                             </div>
                         </div>
 
-                        <p style="font-size: 14px; color: #D1D5DB; margin-bottom: 16px; margin-top: 0; font-style: italic;">"Tudo pronto para esmagar?"</p>
+                        <p class="text-sm text-gray-300 mb-4 italic">"Tudo pronto para esmagar?"</p>
 
-                        <button style="width: 100%; background-color: #00FF88; color: #000000; font-weight: 700; padding: 16px; border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 8px; border: none; cursor: pointer; box-shadow: 0 4px 20px rgba(0,255,136,0.25);">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="#000000" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                        <button class="w-full bg-[#00FF88] hover:bg-[#00cc6a] text-black font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-transform active:scale-[0.98] shadow-[0_4px_20px_rgba(0,255,136,0.25)]">
+                            <svg class="w-5 h-5 fill-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
                             INICIAR AGORA
                         </button>
                     </div>
@@ -137,67 +156,53 @@
 
             <!-- Available Workouts List -->
             <section>
-                <h4 style="font-size: 14px; font-weight: 700; color: #6B7280; margin-bottom: 16px; margin-top: 0; text-transform: uppercase; letter-spacing: 0.05em;">Outros Treinos Disponíveis</h4>
-                <div style="display: flex; flex-direction: column; gap: 12px;">
+                <h4 class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">Outros Treinos Disponíveis</h4>
+                <div class="space-y-3">
                     
                     <!-- Workout B -->
-                    <div style="background-color: #1A1A1A; border: 1px solid #262626; border-radius: 16px; padding: 16px; display: flex; align-items: center; gap: 16px; cursor: pointer;">
-                        <!-- Letter Icon -->
-                        <div style="width: 48px; height: 48px; border-radius: 12px; background-color: #262626; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.05); flex-shrink: 0;">
-                            <span style="font-size: 20px; font-weight: 700; color: #FFFFFF;">B</span>
+                    <div class="bg-[#1A1A1A] border border-[#262626] rounded-2xl p-4 flex items-center gap-4 hover:border-gray-600 transition-colors cursor-pointer group">
+                        <div class="w-12 h-12 rounded-xl bg-[#262626] flex items-center justify-center border border-white/5 group-hover:border-white/10 transition-colors">
+                            <span class="text-xl font-bold text-white">B</span>
                         </div>
-
-                        <!-- Info -->
-                        <div style="flex: 1;">
-                            <h5 style="color: #FFFFFF; font-weight: 700; margin: 0; font-size: 16px;">Treino B - Puxar</h5>
-                            <p style="font-size: 12px; color: #6B7280; margin: 4px 0 0 0;">Costas e Bíceps</p>
+                        <div class="flex-1">
+                            <h5 class="text-white font-bold">Treino B - Puxar</h5>
+                            <p class="text-xs text-gray-500">Costas e Bíceps</p>
                         </div>
-
-                        <!-- Metrics & Action -->
-                        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px;">
-                            <div style="display: flex; align-items: center; gap: 12px; font-size: 10px; color: #9CA3AF; margin-bottom: 4px;">
-                                <div style="display: flex; align-items: center; gap: 4px;">
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="10" x2="14" y1="2" y2="2"/><line x1="12" x2="15" y1="14" y2="11"/><circle cx="12" cy="14" r="8"/></svg> 
-                                    60m
+                        <div class="flex flex-col items-end gap-1">
+                            <div class="flex items-center gap-3 text-[10px] text-gray-400 mb-1">
+                                <div class="flex items-center gap-1">
+                                    <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="10" x2="14" y1="2" y2="2"/><line x1="12" x2="15" y1="14" y2="11"/><circle cx="12" cy="14" r="8"/></svg> 60m
                                 </div>
-                                <div style="display: flex; align-items: center; gap: 4px;">
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> 
-                                    450
+                                <div class="flex items-center gap-1">
+                                    <svg class="w-3 h-3 text-orange-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> 450
                                 </div>
                             </div>
-                            <div style="width: 32px; height: 32px; border-radius: 50%; border: 1px solid #4B5563; display: flex; align-items: center; justify-content: center;">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                            <div class="w-8 h-8 rounded-full border border-gray-600 flex items-center justify-center group-hover:bg-white group-hover:border-white transition-all">
+                                <svg class="w-3 h-3 fill-white text-white group-hover:text-black group-hover:fill-black transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
                             </div>
                         </div>
                     </div>
 
                     <!-- Workout C -->
-                    <div style="background-color: #1A1A1A; border: 1px solid #262626; border-radius: 16px; padding: 16px; display: flex; align-items: center; gap: 16px; cursor: pointer;">
-                        <!-- Letter Icon -->
-                        <div style="width: 48px; height: 48px; border-radius: 12px; background-color: #262626; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.05); flex-shrink: 0;">
-                            <span style="font-size: 20px; font-weight: 700; color: #FFFFFF;">C</span>
+                    <div class="bg-[#1A1A1A] border border-[#262626] rounded-2xl p-4 flex items-center gap-4 hover:border-gray-600 transition-colors cursor-pointer group">
+                        <div class="w-12 h-12 rounded-xl bg-[#262626] flex items-center justify-center border border-white/5 group-hover:border-white/10 transition-colors">
+                            <span class="text-xl font-bold text-white">C</span>
                         </div>
-
-                        <!-- Info -->
-                        <div style="flex: 1;">
-                            <h5 style="color: #FFFFFF; font-weight: 700; margin: 0; font-size: 16px;">Treino C - Pernas</h5>
-                            <p style="font-size: 12px; color: #6B7280; margin: 4px 0 0 0;">Quadríceps e Panturrilha</p>
+                        <div class="flex-1">
+                            <h5 class="text-white font-bold">Treino C - Pernas</h5>
+                            <p class="text-xs text-gray-500">Quadríceps e Panturrilha</p>
                         </div>
-
-                        <!-- Metrics & Action -->
-                        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px;">
-                            <div style="display: flex; align-items: center; gap: 12px; font-size: 10px; color: #9CA3AF; margin-bottom: 4px;">
-                                <div style="display: flex; align-items: center; gap: 4px;">
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="10" x2="14" y1="2" y2="2"/><line x1="12" x2="15" y1="14" y2="11"/><circle cx="12" cy="14" r="8"/></svg> 
-                                    70m
+                        <div class="flex flex-col items-end gap-1">
+                            <div class="flex items-center gap-3 text-[10px] text-gray-400 mb-1">
+                                <div class="flex items-center gap-1">
+                                    <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="10" x2="14" y1="2" y2="2"/><line x1="12" x2="15" y1="14" y2="11"/><circle cx="12" cy="14" r="8"/></svg> 70m
                                 </div>
-                                <div style="display: flex; align-items: center; gap: 4px;">
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> 
-                                    600
+                                <div class="flex items-center gap-1">
+                                    <svg class="w-3 h-3 text-orange-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> 600
                                 </div>
                             </div>
-                            <div style="width: 32px; height: 32px; border-radius: 50%; border: 1px solid #4B5563; display: flex; align-items: center; justify-content: center;">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                            <div class="w-8 h-8 rounded-full border border-gray-600 flex items-center justify-center group-hover:bg-white group-hover:border-white transition-all">
+                                <svg class="w-3 h-3 fill-white text-white group-hover:text-black group-hover:fill-black transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
                             </div>
                         </div>
                     </div>
@@ -209,92 +214,34 @@
 
     </div>
 
-    <!-- Bottom Nav -->
-    <nav style="position: fixed; bottom: 0; left: 0; right: 0; background-color: rgba(13, 13, 13, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-top: 1px solid rgba(255,255,255,0.05); padding-top: 8px; padding-bottom: 34px; padding-left: 8px; padding-right: 8px; z-index: 50; box-shadow: 0 -10px 40px rgba(0,0,0,0.5);">
-      <div style="display: flex; justify-content: space-between; align-items: center; max-width: 512px; margin: 0 auto; height: 64px;">
-        
-        <!-- Home (Inactive) -->
-        <button style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; background: none; border: none; color: #6B7280; cursor: pointer;">
-            <div style="padding: 4px;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/> 
-                    <polyline points="9 22 9 12 15 12 15 22"/>
-                </svg>
-            </div>
-            <span style="font-size: 10px; font-weight: 500; margin-top: 2px;">Início</span>
+    <!-- FIXED NAVIGATION BAR -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-[#0D0D0D]/85 backdrop-blur-md border-t border-white/5 pb-6 pt-2 px-2 z-50">
+      <div class="flex justify-between items-center max-w-md mx-auto h-16">
+        <!-- Início -->
+        <a href="index.html" class="flex flex-col items-center justify-center w-full text-gray-500 hover:text-white transition-colors">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span class="text-[10px] font-medium mt-0.5">Início</span>
+        </a>
+        <!-- Treino (Ativo) -->
+        <a href="workout_view.html" class="flex flex-col items-center justify-center w-full text-[#00FF88]">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6.5 6.5 11 11"/><path d="m21 21-1-1"/><path d="m3 3 1 1"/><path d="m18 22 4-4"/><path d="m2 6 4-4"/><path d="m3 10 7-7"/><path d="m14 21 7-7"/></svg>
+            <span class="text-[10px] font-medium mt-0.5">Treino</span>
+        </a>
+        <!-- Dieta -->
+        <a href="diet_view.html" class="flex flex-col items-center justify-center w-full text-gray-500 hover:text-white transition-colors">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>
+            <span class="text-[10px] font-medium mt-0.5">Dieta</span>
+        </a>
+        <!-- Água (Placeholder) -->
+        <button class="flex flex-col items-center justify-center w-full text-gray-500 hover:text-gray-300">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>
+            <span class="text-[10px] font-medium mt-0.5">Água</span>
         </button>
-
-        <!-- Treino (Active - Neon) -->
-        <button style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; background: none; border: none; color: #00FF88; cursor: pointer;">
-            <div style="padding: 4px;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="m6.5 6.5 11 11"/>
-                    <path d="m21 21-1-1"/>
-                    <path d="m3 3 1 1"/>
-                    <path d="m18 22 4-4"/>
-                    <path d="m2 6 4-4"/>
-                    <path d="m3 10 7-7"/>
-                    <path d="m14 21 7-7"/>
-                </svg>
-            </div>
-            <span style="font-size: 10px; font-weight: 500; margin-top: 2px;">Treino</span>
+        <!-- Mais (Placeholder) -->
+        <button class="flex flex-col items-center justify-center w-full text-gray-500 hover:text-gray-300">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+            <span class="text-[10px] font-medium mt-0.5">Mais</span>
         </button>
-
-        <!-- Dieta (Inactive) -->
-        <button style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; background: none; border: none; color: #6B7280; cursor: pointer;">
-            <div style="padding: 4px;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/>
-                    <path d="M7 2v20"/>
-                    <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/>
-                </svg>
-            </div>
-            <span style="font-size: 10px; font-weight: 500; margin-top: 2px;">Dieta</span>
-        </button>
-
-        <!-- Água (Inactive + Progress) -->
-        <button style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; background: none; border: none; color: #6B7280; cursor: pointer;">
-            <div style="position: relative; padding: 4px;">
-                <!-- Ring -->
-                <div style="position: absolute; inset: 0; transform: rotate(-90deg);">
-                  <svg width="100%" height="100%" viewBox="0 0 24 24">
-                      <circle cx="12" cy="12" r="10" fill="none" stroke="#333" stroke-width="2" />
-                      <circle cx="12" cy="12" r="10" fill="none" stroke="#3b82f6" stroke-width="2" stroke-dasharray="62.8" stroke-dashoffset="31.4" stroke-linecap="round" />
-                  </svg>
-                </div>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform: scale(0.75);">
-                    <path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>
-                </svg>
-            </div>
-            <span style="font-size: 10px; font-weight: 500; margin-top: 2px;">Água</span>
-        </button>
-
-        <!-- Resumo (Inactive) -->
-        <button style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; background: none; border: none; color: #6B7280; cursor: pointer;">
-            <div style="padding: 4px;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
-                    <polyline points="14 2 14 8 20 8"/>
-                    <line x1="16" x2="8" y1="13" y2="13"/>
-                    <line x1="16" x2="8" y1="17" y2="17"/>
-                    <line x1="10" x2="8" y1="9" y2="9"/>
-                </svg>
-            </div>
-            <span style="font-size: 10px; font-weight: 500; margin-top: 2px;">Resumo</span>
-        </button>
-
-        <!-- Mais (Inactive) -->
-        <button style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; background: none; border: none; color: #6B7280; cursor: pointer;">
-            <div style="padding: 4px;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="1"/>
-                    <circle cx="19" cy="12" r="1"/>
-                    <circle cx="5" cy="12" r="1"/>
-                </svg>
-            </div>
-            <span style="font-size: 10px; font-weight: 500; margin-top: 2px;">Mais</span>
-        </button>
-
       </div>
     </nav>
 
